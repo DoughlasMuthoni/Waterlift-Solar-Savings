@@ -172,12 +172,12 @@ export default function Hero({ onLocationConfirmed }) {
             <span style={{ color: '#f59e0b' }}>Your Power Bill</span>
           </h1>
           <p className="mt-5 text-lg sm:text-xl text-white/80 font-medium text-center max-w-xl">
-            Rent, Rent-to-Own &amp; Cash Solar — covering all 47 counties in Kenya.
+            Rent Only, Rent-to-Own &amp; Cash Solar — covering all 47 counties in Kenya.
           </p>
 
           {/* Trust badges */}
           <div className="flex flex-wrap justify-center gap-4 mt-6 mb-10">
-            {['Free Installation','Lifetime Maintenance','47 Counties Served'].map(b => (
+            {['Installation','Lifetime Maintenance','47 Counties Served'].map(b => (
               <span key={b} className="flex items-center gap-1.5 text-xs font-semibold text-white/90 bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-1.5 rounded-full">
                 <span style={{ color: '#06b6d4' }}>✓</span> {b}
               </span>

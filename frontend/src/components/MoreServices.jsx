@@ -11,19 +11,19 @@ const SERVICES = [
     icon: '🔬',
     title: 'Hydrogeological Survey',
     desc: 'Scientific groundwater assessment before you drill.',
-    path: '/hydrogeological-survey',
+    path: '/hydro-geological-survey-services-in-kenya',
   },
   {
     icon: '🧪',
     title: 'Test Pumping',
     desc: 'Yield testing and water quality analysis.',
-    path: '/test-pumping',
+    path: '/test-pumping-services-in-kenya',
   },
   {
     icon: '🗼',
     title: 'Water Storage Towers',
     desc: 'Elevated tanks and distribution systems.',
-    path: '/water-storage-towers',
+    path: 'water-tanks-installation-services-in-kenya',
   },
   {
     icon: '🛒',
@@ -48,7 +48,7 @@ export default function MoreServices() {
             We're More Than Solar
           </h2>
           <p className="text-white/50 text-sm mt-2 max-w-md mx-auto">
-            Visit our full website to explore borehole drilling, water towers, and more —
+            Visit our full website to explore borehole drilling, Borehole Equipping, water towers, and more —
             everything you need for water and energy independence.
           </p>
         </div>

@@ -168,7 +168,7 @@ export default function Testimonials() {
               </motion.div>
             ) : !showForm ? (
               <motion.div key="cta" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                <p className="text-gray-400 text-sm mb-3">Happy with Waterlift Solar? Let others know.</p>
+                <p className="text-gray-400 text-sm mb-3">Happy with WaterliftSolar Savings? Let others know.</p>
                 <button
                   onClick={() => setShowForm(true)}
                   className="inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-full text-white text-sm transition-opacity hover:opacity-90 shadow-md"

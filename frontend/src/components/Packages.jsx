@@ -39,7 +39,7 @@ export default function Packages() {
             Transparent Pricing. Zero Surprises.
           </h2>
           <p className="text-gray-500 text-sm max-w-xl mx-auto">
-            Choose the payment model that suits you — all include free installation and professional commissioning.
+            Choose the payment model that suits you — all include installation and professional commissioning.
           </p>
         </div>
 
@@ -175,7 +175,7 @@ export default function Packages() {
         </div>
 
         <p className="text-center text-gray-400 text-xs mt-8">
-          All prices include free installation &amp; VAT. Subject to free site survey.
+          All prices include installation &amp; VAT. Subject to free site survey.
           Savings estimated at KES 28.45/kWh · 75% solar yield.
         </p>
       </div>

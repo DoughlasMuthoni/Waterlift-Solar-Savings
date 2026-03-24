@@ -241,11 +241,11 @@ export default function ContactForm({ prefill }) {
               <div className="space-y-1.5 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Mon – Fri</span>
-                  <span className="font-semibold" style={{ color: '#0f2d52' }}>8:00 AM – 6:00 PM</span>
+                  <span className="font-semibold" style={{ color: '#0f2d52' }}>7:00 AM – 5:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Saturday</span>
-                  <span className="font-semibold" style={{ color: '#0f2d52' }}>8:00 AM – 4:00 PM</span>
+                  <span className="font-semibold" style={{ color: '#0f2d52' }}>8:00 AM – 2:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Sunday</span>

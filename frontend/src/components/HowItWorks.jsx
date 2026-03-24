@@ -20,7 +20,7 @@ const STEPS = [
   {
     step: '04',
     icon: '🔧',
-    title: 'Free Installation',
+    title: 'Installation',
     desc: 'Our certified engineers visit your site, install your system, and commission it — at zero extra cost.',
   },
 ]
