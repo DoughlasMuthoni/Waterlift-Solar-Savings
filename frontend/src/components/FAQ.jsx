@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
 const FAQS = [
-  { q: 'How long does installation take?', a: 'A standard residential installation takes 1–2 days. Commercial or borehole setups may take 2–4 days depending on the site complexity.' },
-  { q: 'Do I own the system on the Rent plan?', a: 'No — on the Rent plan, Waterlift retains ownership and is responsible for all maintenance and replacements. You simply pay a fixed monthly fee and enjoy clean power.' },
-  { q: 'What happens after the 72-month Rent-to-Own period?', a: 'After 72 months you own the system outright at no additional cost. The system typically has a 25-year lifespan, so you enjoy free solar for over 15 more years.' },
-  { q: 'Will solar work during the rainy season?', a: 'Yes. Solar panels generate electricity from daylight, not direct sunlight. Output reduces slightly on overcast days but your battery bank bridges the gap.' },
-  { q: 'Can solar power my borehole pump?', a: 'Absolutely — this is one of our specialties. Borehole pumps require high surge current at start-up. Our Premium package is engineered specifically for this load profile.' },
-  { q: 'Is there a site survey before installation?', a: 'Yes. After you sign up, our engineers conduct a free site survey to assess your roof structure, shade conditions, and load requirements before any work begins.' },
+  { q: 'How long does installation take?', a: 'Most systems are installed in a single day. Larger commercial setups may take two to three days. Either way, our team handles everything from survey to switch-on — you do not need to lift a finger.' },
+  { q: 'Do I own the system on the Rent plan?', a: 'On the Rent Only plan, Waterlift owns and maintains the system. You enjoy the savings with zero responsibility for repairs. If you want ownership, choose our Rent-to-Own option.' },
+  { q: 'What happens after the 72-month Rent-to-Own period?', a: 'The system is yours. Fully paid. You continue enjoying free solar power with no monthly payments — for the entire remaining lifespan of the system.' },
+  { q: 'Will solar work during the rainy season?', a: 'Yes. Solar panels generate power even on cloudy days. Our systems include battery backup so you have power day and night, rain or shine. Kenya receives excellent solar irradiance year-round.' },
+  { q: 'Can solar power my borehole pump?', a: 'Absolutely. Our Premium package is specifically designed for borehole pump surge loads. We are one of the few companies in Kenya that specialise in sizing solar systems for high-draw water equipment.' },
+  { q: 'Is there a site survey before installation?', a: 'Yes, and it is completely free. Our engineers visit your property, assess your roof, measure your energy needs, and design a system tailored to you — at no cost and no obligation.' },
 ]
 
 function FAQItem({ q, a }) {
@@ -36,10 +36,10 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full" style={{ background: '#fff7ed', color: '#f97316' }}>
-            FAQ
+            Questions Before You Switch?
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold mt-3" style={{ color: '#0f2d52' }}>
-            Common Questions
+            Everything You Need to Know
           </h2>
         </div>
         <div className="bg-white rounded-3xl shadow-md border border-gray-100 px-7">

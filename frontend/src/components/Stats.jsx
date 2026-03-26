@@ -1,8 +1,8 @@
 const STATS = [
-  { value: '47',    unit: '',    label: 'Counties Served',       icon: '🗺️' },
-  { value: '2,400+', unit: '',  label: 'Systems Installed',      icon: '⚡' },
-  { value: '75%',   unit: '',   label: 'Average Bill Reduction',  icon: '📉' },
-  { value: '28.45', unit: 'KES/kWh', label: 'KPLC Rate Saved',  icon: '💡' },
+  { value: '47',    unit: '',    label: 'Counties Covered',   icon: '🗺️' },
+  { value: '105+',   unit: '',  label: 'Systems Running',     icon: '⚡' },
+  { value: '75%',   unit: '',   label: 'Average Savings',     icon: '📉' },
+  { value: '28.45', unit: 'KES/kWh', label: 'Per kWh You Keep', icon: '💡' },
 ]
 
 export default function Stats() {

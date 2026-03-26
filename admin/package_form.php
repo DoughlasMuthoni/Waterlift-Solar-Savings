@@ -12,7 +12,7 @@ if ($id) {
     $stmt = $pdo->prepare("SELECT * FROM packages WHERE id = ?");
     $stmt->execute([$id]);
     $pkg = $stmt->fetch();
-    if (!$pkg) { header('Location: /waterlift_solat_savings/admin/packages.php'); exit; }
+    if (!$pkg) { header('Location: ' . ADMIN_BASE . '/packages.php'); exit; }
 }
 
 // ── Gradient presets ──────────────────────────────────────────────────────────
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                  :cash_price,:cash_roi,:savings_label,:sort_order,:is_active)";
         }
         $pdo->prepare($sql)->execute($data);
-        header('Location: /waterlift_solat_savings/admin/packages.php?saved=1');
+        header('Location: ' . ADMIN_BASE . '/packages.php?saved=1');
         exit;
     }
 }
@@ -152,7 +152,7 @@ $inputCls = 'w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm outli
 
 <!-- Back -->
 <div class="mb-5">
-  <a href="/waterlift_solat_savings/admin/packages.php" class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-orange-500">
+  <a href="<?= ADMIN_BASE ?>/packages.php" class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-orange-500">
     <span class="material-icons text-base">arrow_back</span> Back to Packages
   </a>
 </div>
@@ -384,7 +384,7 @@ $inputCls = 'w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm outli
     </button>
 
     <?php if ($id): ?>
-    <a href="/waterlift_solat_savings/admin/packages.php"
+    <a href="<?= ADMIN_BASE ?>/packages.php"
        class="block text-center py-3 rounded-2xl text-sm font-semibold border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors">
       Cancel
     </a>

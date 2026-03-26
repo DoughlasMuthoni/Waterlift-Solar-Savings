@@ -1,22 +1,25 @@
 <?php
-// ── Admin credentials (change these before going live) ───────────────────────
-define('ADMIN_USER', 'admin');
-define('ADMIN_PASS', '$2y$12$' . 'placeholder'); // replaced at first run below
+// ── Environment detection ─────────────────────────────────────────────────────
+// Automatically detects local XAMPP vs production and sets the correct base path.
+$_host = strtolower($_SERVER['HTTP_HOST'] ?? '');
+define('IS_LOCAL',   str_contains($_host, 'localhost') || str_contains($_host, '127.0.0.1'));
+define('ADMIN_BASE', IS_LOCAL ? '/waterlift_solat_savings/admin' : '/admin');
+define('SITE_BASE',  IS_LOCAL ? '/waterlift_solat_savings' : '');
 
-// We store the real hash so it's not plain-text in code.
+// ── Admin credentials ─────────────────────────────────────────────────────────
+define('ADMIN_USER', 'admin');
 // Default password: waterlift@2024
-const ADMIN_PASS_HASH = '$2y$12$Q8vQ3nT5kXm2Lp1JwRzOuOYvKkXvZq5Gq1N8mFpTdXoJwRzOuOY'; // fallback
+const ADMIN_PASS_HASH = '$2y$12$Q8vQ3nT5kXm2Lp1JwRzOuOYvKkXvZq5Gq1N8mFpTdXoJwRzOuOY';
 
 function check_auth(): void {
     if (session_status() === PHP_SESSION_NONE) session_start();
     if (empty($_SESSION['admin_logged_in'])) {
-        header('Location: /waterlift_solat_savings/admin/login.php');
+        header('Location: ' . ADMIN_BASE . '/login.php');
         exit;
     }
 }
 
 function attempt_login(string $user, string $pass): bool {
     if ($user !== ADMIN_USER) return false;
-    // Accept plain comparison for the default password
     return $pass === 'waterlift@2024' || password_verify($pass, ADMIN_PASS_HASH);
 }

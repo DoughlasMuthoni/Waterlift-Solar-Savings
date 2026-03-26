@@ -14,7 +14,7 @@ function getPrice(pkg, tab) {
 }
 
 export default function Packages() {
-  const [activeTab, setActiveTab] = useState('rent')
+  const [activeTab, setActiveTab] = useState('rto')
   const [packages, setPackages]   = useState([])
   const [loading, setLoading]     = useState(true)
 
@@ -80,7 +80,7 @@ export default function Packages() {
 
         {/* Cards */}
         {!loading && (
-          <div className={`grid grid-cols-1 gap-8 ${packages.length === 2 ? 'md:grid-cols-2 max-w-3xl mx-auto' : packages.length === 1 ? 'max-w-sm mx-auto' : 'md:grid-cols-3'}`}>
+          <div className={`grid grid-cols-1 gap-10 items-stretch ${packages.length === 2 ? 'md:grid-cols-2 max-w-3xl mx-auto' : packages.length === 1 ? 'max-w-sm mx-auto' : 'md:grid-cols-3'}`}>
             {packages.map((pkg, idx) => {
               const price = getPrice(pkg, activeTab)
               const isPopular = pkg.badge === 'Most Popular'
@@ -92,54 +92,60 @@ export default function Packages() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="relative flex flex-col rounded-3xl overflow-hidden"
+                  className="relative flex flex-col rounded-3xl overflow-hidden bg-white"
                   style={{
+                    border: isPopular ? '2px solid #f97316' : '1px solid #e2e8f0',
                     boxShadow: isPopular
-                      ? '0 24px 64px rgba(8,145,178,0.22), 0 4px 16px rgba(0,0,0,0.1)'
-                      : '0 4px 20px rgba(0,0,0,0.08)',
-                    transform: isPopular ? 'scale(1.03)' : 'scale(1)',
+                      ? '0 20px 60px rgba(249,115,22,0.18), 0 4px 16px rgba(0,0,0,0.08)'
+                      : '0 4px 20px rgba(0,0,0,0.06)',
                   }}
                 >
-                  {/* Gradient header */}
-                  <div className="relative px-7 pt-8 pb-10" style={{ background: pkg.gradient }}>
-                    {pkg.badge && (
-                      <div className="absolute top-4 right-4 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wide"
-                        style={{ background: '#f59e0b', color: '#0f2d52' }}>
-                        ★ {pkg.badge}
-                      </div>
-                    )}
-                    <div className="text-4xl mb-3">{pkg.icon}</div>
-                    <h3 className="text-2xl font-extrabold text-white">{pkg.name}</h3>
-                    <div className="flex items-center gap-2 mt-1 mb-6">
-                      <span className="text-xs font-bold px-2.5 py-1 rounded-full"
+                  {/* Popular ribbon */}
+                  {isPopular && (
+                    <div className="text-center py-2 text-xs font-black tracking-widest uppercase"
+                      style={{ background: '#f97316', color: 'white' }}>
+                      ★ Most Popular
+                    </div>
+                  )}
+
+                  {/* Coloured header */}
+                  <div className="px-7 pt-7 pb-7" style={{ background: pkg.gradient }}>
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-4xl leading-none">{pkg.icon}</div>
+                      <span className="text-xs font-bold px-3 py-1 rounded-full"
                         style={{ background: 'rgba(255,255,255,0.2)', color: 'white' }}>
                         {pkg.capacity}
                       </span>
-                      <span className="text-white/60 text-xs">{pkg.tagline}</span>
                     </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-black text-white">{price.main}</div>
+                    <h3 className="text-xl font-extrabold text-white mb-1">{pkg.name}</h3>
+                    {pkg.tagline && (
+                      <p className="text-white/70 text-xs mb-5 leading-relaxed">{pkg.tagline}</p>
+                    )}
+                    {/* Price block */}
+                    <div className="rounded-2xl px-5 py-4" style={{ background: 'rgba(0,0,0,0.18)' }}>
+                      <div className="text-3xl font-black text-white leading-tight">{price.main}</div>
                       <div className="text-white/60 text-xs mt-1">{price.sub}</div>
                     </div>
                   </div>
 
                   {/* White body */}
-                  <div className="flex-1 flex flex-col bg-white px-7 pb-7">
+                  <div className="flex-1 flex flex-col px-7 pt-6 pb-7">
+                    {/* Savings badge */}
                     {pkg.savingsLabel && (
-                      <div className="flex items-center justify-between -mt-5 mb-6 rounded-2xl px-5 py-3.5 shadow-md"
-                        style={{ background: 'white', border: '2px solid #dcfce7' }}>
+                      <div className="flex items-center gap-3 rounded-xl px-4 py-3 mb-5"
+                        style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+                        <span className="text-xl leading-none">📉</span>
                         <div>
                           <p className="text-xs font-semibold" style={{ color: '#16a34a' }}>Estimated savings</p>
-                          <p className="text-base font-extrabold" style={{ color: '#15803d' }}>{pkg.savingsLabel}</p>
+                          <p className="text-sm font-extrabold" style={{ color: '#15803d' }}>{pkg.savingsLabel}</p>
                         </div>
-                        <span className="text-2xl">📉</span>
                       </div>
                     )}
 
-                    <ul className="space-y-2.5 mb-7 flex-1">
+                    <ul className="space-y-3 mb-7 flex-1">
                       {pkg.features.map((f, i) => (
-                        <li key={i} className="flex items-center gap-3 text-sm text-gray-600">
-                          <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                        <li key={i} className="flex items-start gap-3 text-sm text-gray-600 leading-snug">
+                          <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5"
                             style={{ background: '#fff7ed', color: '#f97316' }}>✓</span>
                           {f}
                         </li>
@@ -149,10 +155,10 @@ export default function Packages() {
                     <a href="#contact"
                       className="block text-center font-extrabold py-3.5 rounded-2xl text-sm transition-all hover:opacity-90"
                       style={isPopular
-                        ? { background: pkg.gradient, color: 'white', boxShadow: '0 4px 14px rgba(8,145,178,0.3)' }
-                        : { background: '#f1f5f9', color: '#0f2d52' }
+                        ? { background: '#f97316', color: 'white', boxShadow: '0 4px 14px rgba(249,115,22,0.3)' }
+                        : { background: '#0f2d52', color: 'white' }
                       }>
-                      Get Started with {pkg.name} →
+                      Start Saving with {pkg.name} →
                     </a>
                   </div>
                 </motion.div>
@@ -164,13 +170,15 @@ export default function Packages() {
         {/* Personalized CTA */}
         <div className="mt-14 text-center rounded-3xl px-8 py-10 shadow-lg"
           style={{ background: 'linear-gradient(135deg, #0f2d52, #1e4d8c)' }}>
-          <p className="text-white/70 text-sm mb-2">Want a plan based on your actual roof and bill?</p>
-          <h3 className="text-2xl font-extrabold text-white mb-5">Get Your Personalized Solar Plan</h3>
+          <h3 className="text-2xl font-extrabold text-white mb-3">Not Sure Which Plan Fits?</h3>
+          <p className="text-white/70 text-sm mb-6 max-w-md mx-auto">
+            Tell us about your property and we will build a custom solar plan based on your actual roof and bill. It takes less than five minutes and costs nothing.
+          </p>
           <a href="#"
             onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
             className="inline-block font-bold px-8 py-3.5 rounded-full text-white text-sm transition-opacity hover:opacity-90"
             style={{ background: '#f97316' }}>
-            ☀️ Start My Free Assessment →
+            Get My Personalised Solar Plan →
           </a>
         </div>
 

@@ -1,13 +1,20 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json; charset=utf-8');
-header('Cache-Control: public, max-age=60');
+header('Cache-Control: no-store, no-cache, must-revalidate');
 
 require_once __DIR__ . '/db_connect.php';
 
-$rows = $pdo->query(
-    "SELECT * FROM packages WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
-)->fetchAll();
+if (!$pdo) { echo '[]'; exit; }
+
+try {
+    $rows = $pdo->query(
+        "SELECT * FROM packages WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
+    )->fetchAll();
+} catch (PDOException $e) {
+    error_log('[Waterlift] get_packages error: ' . $e->getMessage());
+    echo '[]'; exit;
+}
 
 $out = [];
 foreach ($rows as $r) {

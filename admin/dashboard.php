@@ -158,7 +158,7 @@ $status_colors = [
 <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
   <div class="px-4 sm:px-6 py-4 border-b border-slate-100 flex items-center justify-between">
     <h3 class="font-bold text-sm" style="color:#0f2d52">Recent Leads</h3>
-    <a href="/waterlift_solat_savings/admin/leads.php"
+    <a href="<?= ADMIN_BASE ?>/leads.php"
        class="text-xs font-bold px-3 sm:px-4 py-2 rounded-xl text-white"
        style="background:#f97316">View All →</a>
   </div>
@@ -198,7 +198,7 @@ $status_colors = [
           </td>
           <td class="px-6 py-3.5 text-xs text-slate-400"><?= date('d M Y', strtotime($lead['created_at'])) ?></td>
           <td class="px-6 py-3.5">
-            <a href="/waterlift_solat_savings/admin/lead.php?id=<?= $lead['id'] ?>"
+            <a href="<?= ADMIN_BASE ?>/lead.php?id=<?= $lead['id'] ?>"
                class="text-xs font-bold px-3 py-1.5 rounded-lg text-white" style="background:#0f2d52">View</a>
           </td>
         </tr>
@@ -236,7 +236,7 @@ $status_colors = [
         <?php endif; ?>
         <span class="text-xs bg-white border border-slate-200 rounded-full px-2.5 py-1 text-slate-400"><?= date('d M Y', strtotime($lead['created_at'])) ?></span>
       </div>
-      <a href="/waterlift_solat_savings/admin/lead.php?id=<?= $lead['id'] ?>"
+      <a href="<?= ADMIN_BASE ?>/lead.php?id=<?= $lead['id'] ?>"
          class="block text-center text-xs font-bold py-2 rounded-xl text-white" style="background:#0f2d52">
         View Details →
       </a>

@@ -16,13 +16,13 @@ export default function UseCases() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full" style={{ background: '#e0f2fe', color: '#06b6d4' }}>
-            What We Power
+            Find Your Solar Solution
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold mt-3" style={{ color: '#0f2d52' }}>
-            Solar for Every Need
+            Whether You Run a Home,<br />a Business, or a Farm
           </h2>
           <p className="mt-3 text-gray-500 max-w-xl mx-auto text-sm">
-            From single-room homes to large commercial setups — we have a package for every situation across Kenya.
+            We have a system built for your exact needs.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export default function UseCases() {
                       <span className="text-sm font-bold" style={{ color: '#f97316' }}>{c.stat_label}</span>
                     )}
                     <a href="#contact" className="text-xs font-bold px-4 py-2 rounded-full transition-colors text-white ml-auto" style={{ background: '#0f2d52' }}>
-                      Learn more →
+                      Get a Quote →
                     </a>
                   </div>
                 </div>

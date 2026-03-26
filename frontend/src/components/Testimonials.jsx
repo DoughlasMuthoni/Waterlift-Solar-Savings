@@ -80,11 +80,8 @@ export default function Testimonials() {
             Customer Stories
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold mt-3" style={{ color: '#0f2d52' }}>
-            Trusted Across Kenya
+            105+ Kenyans Already Saving.<br />Here Is What They Say.
           </h2>
-          <p className="mt-3 text-gray-500 text-sm max-w-md mx-auto">
-            Real experiences from real customers. Have one to share?
-          </p>
         </div>
 
         {/* Loading skeleton */}

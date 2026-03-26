@@ -5,18 +5,18 @@ require_once __DIR__ . '/includes/layout.php';
 check_auth();
 
 $id = (int)($_GET['id'] ?? 0);
-if (!$id) { header('Location: /waterlift_solat_savings/admin/leads.php'); exit; }
+if (!$id) { header('Location: ' . ADMIN_BASE . '/leads.php'); exit; }
 
 $lead = $pdo->prepare("SELECT * FROM leads WHERE id = ?");
 $lead->execute([$id]);
 $lead = $lead->fetch();
-if (!$lead) { header('Location: /waterlift_solat_savings/admin/leads.php'); exit; }
+if (!$lead) { header('Location: ' . ADMIN_BASE . '/leads.php'); exit; }
 
 // Handle notes + status update via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['status'])) {
     $pdo->prepare("UPDATE leads SET status=?, notes=? WHERE id=?")
         ->execute([$_POST['status'], trim($_POST['notes'] ?? ''), $id]);
-    header("Location: /waterlift_solat_savings/admin/lead.php?id=$id&saved=1"); exit;
+    header('Location: ' . ADMIN_BASE . "/lead.php?id=$id&saved=1"); exit;
 }
 
 $status_colors = [
@@ -33,7 +33,7 @@ open_layout("Lead #$id — {$lead['name']}", 'leads');
 
 <!-- Back + breadcrumb -->
 <div class="flex items-center gap-2 mb-6 text-sm">
-  <a href="/waterlift_solat_savings/admin/leads.php" class="text-slate-400 hover:text-orange-500">← All Leads</a>
+  <a href="<?= ADMIN_BASE ?>/leads.php" class="text-slate-400 hover:text-orange-500">← All Leads</a>
   <span class="text-slate-300">/</span>
   <span class="font-semibold" style="color:#0f2d52"><?= htmlspecialchars($lead['name']) ?></span>
 </div>

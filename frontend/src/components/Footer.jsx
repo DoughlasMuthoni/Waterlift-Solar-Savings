@@ -10,10 +10,10 @@ export default function Footer() {
         <div className="md:col-span-2">
           {/* Logo on white pill — visible on dark bg */}
           <div className="inline-block bg-white rounded-2xl px-4 py-2 mb-4 shadow-md">
-            <img src="/images/logo.png" alt="Waterlift Solar Savings" className="h-10 object-contain" />
+            <img src="/images/logo.jpeg" alt="Waterlift Solar Savings" className="h-10 object-contain" />
           </div>
           <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-            Equitable access to solar energy and borehole drilling — serving all 47 counties across Kenya.
+            Reliable solar energy and clean water for homes, schools, and farms across all 47 counties in Kenya.
           </p>
           {/* WhatsApp chip */}
           <a href="https://wa.me/254768117070" target="_blank" rel="noopener noreferrer"
@@ -80,7 +80,7 @@ export default function Footer() {
       <div className="border-t px-6 py-5" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/35 text-xs text-center">
-            © {year} Waterlift Solar Savings. All rights reserved. | Nairobi, Kenya
+            © {year} Waterlift Solar Limited. All rights reserved.
           </p>
           <div className="flex items-center gap-5 text-xs text-white/35">
             <a href="https://waterliftsolar.africa" target="_blank" rel="noopener noreferrer"

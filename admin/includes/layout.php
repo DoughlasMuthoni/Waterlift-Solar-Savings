@@ -1,6 +1,6 @@
 <?php
 function open_layout(string $title, string $active = ''): void {
-    $base = '/waterlift_solat_savings/admin';
+    $base = ADMIN_BASE;
     $nav = [
         ['href' => "$base/dashboard.php",  'icon' => 'dashboard',    'label' => 'Dashboard',   'key' => 'dashboard'],
         ['href' => "$base/leads.php",      'icon' => 'group',        'label' => 'All Leads',   'key' => 'leads'],
@@ -100,9 +100,9 @@ function open_layout(string $title, string $active = ''): void {
   <div class="px-6 py-5 border-b border-white/10 flex items-center justify-between">
     <div>
       <div class="bg-white rounded-xl px-3 py-2 inline-block">
-        <img src="/waterlift_solat_savings/frontend/public/images/logo.png"
+        <img src="<?= SITE_BASE ?>/frontend/public/images/logo.jpeg"
              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-             class="h-7 object-contain" alt="Waterlift Solar" />
+             class="h-10 object-contain" alt="Waterlift Solar" />
         <span style="display:none;color:#0f2d52;font-weight:800;font-size:13px">Waterlift Solar</span>
       </div>
       <p class="text-white/40 text-[10px] mt-1.5 font-semibold tracking-widest uppercase">Admin Panel</p>
@@ -183,7 +183,7 @@ function close_layout(): void {
 <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-slate-200 flex"
      style="padding-bottom:env(safe-area-inset-bottom)">
   <?php
-  $base2 = '/waterlift_solat_savings/admin';
+  $base2 = ADMIN_BASE;
   $bnav = [
     ['href'=>"$base2/dashboard.php", 'icon'=>'dashboard',   'label'=>'Dashboard'],
     ['href'=>"$base2/leads.php",     'icon'=>'group',       'label'=>'Leads'],

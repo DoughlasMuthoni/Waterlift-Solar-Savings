@@ -40,6 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $v = $case ?? ['title'=>'','tag'=>'','description'=>'','stat_label'=>'','image_url'=>'','sort_order'=>0,'is_active'=>1];
+
+// Normalize image URL for display
+function admin_img(string $url): string {
+    if (!$url) return '';
+    if (str_starts_with($url, 'http')) return $url;
+    if (!str_starts_with($url, '/')) $url = '/images/use-cases/' . $url;
+    return SITE_BASE . $url;
+}
+
 open_layout($id ? 'Edit Use Case' : 'Add Use Case', 'use_cases');
 ?>
 
@@ -113,7 +122,7 @@ open_layout($id ? 'Edit Use Case' : 'Add Use Case', 'use_cases');
            ondrop="handleDrop(event)">
 
         <!-- Hidden file input -->
-        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif"
+        <input type="file" id="fileInput" name="file_upload" accept="image/jpeg,image/png,image/webp,image/gif"
                class="hidden" onchange="handleFileSelect(this.files[0])" />
 
         <!-- Idle state (shown when no image selected) -->
@@ -130,7 +139,7 @@ open_layout($id ? 'Edit Use Case' : 'Add Use Case', 'use_cases');
         <div id="previewWrap" class="relative"
              style="display:<?= $v['image_url'] ? 'block' : 'none' ?>">
           <img id="imgPreview"
-               src="<?= htmlspecialchars($v['image_url'] ?? '') ?>"
+               src="<?= htmlspecialchars(admin_img($v['image_url'] ?? '')) ?>"
                alt="Preview"
                class="w-full rounded-xl object-cover"
                style="max-height:260px; display:<?= $v['image_url'] ? 'block' : 'none' ?>" />
@@ -166,7 +175,7 @@ open_layout($id ? 'Edit Use Case' : 'Add Use Case', 'use_cases');
         <summary class="text-xs text-slate-400 cursor-pointer select-none hover:text-slate-600 transition-colors">
           Or enter an image URL manually
         </summary>
-        <input id="urlFallback" type="url"
+        <input id="urlFallback" type="text"
                value="<?= htmlspecialchars($v['image_url'] ?? '') ?>"
                oninput="setImageFromUrl(this.value)"
                placeholder="https://example.com/photo.jpg  or  /images/photo.jpg"
@@ -209,6 +218,7 @@ open_layout($id ? 'Edit Use Case' : 'Add Use Case', 'use_cases');
 </div>
 
 <script>
+const SITE_BASE      = '<?= SITE_BASE ?>';
 const dropZone       = document.getElementById('dropZone');
 const fileInput      = document.getElementById('fileInput');
 const dropPlaceholder= document.getElementById('dropPlaceholder');
@@ -314,8 +324,15 @@ function uploadFile(file) {
 }
 
 // ── Helpers ──────────────────────────────────────────────────
+function adminImgUrl(src) {
+  if (!src) return src;
+  if (src.startsWith('http') || src.startsWith('data:')) return src;
+  if (!src.startsWith('/')) src = '/images/use-cases/' + src;
+  return SITE_BASE + src;
+}
+
 function showPreview(src) {
-  imgPreview.src          = src;
+  imgPreview.src          = adminImgUrl(src);
   imgPreview.style.display= 'block';
   previewWrap.style.display = 'block';
   dropPlaceholder.style.display = 'none';

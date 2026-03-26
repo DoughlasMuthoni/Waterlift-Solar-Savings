@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waterlift Solar Savings | Cut Your Power Bill by 75%</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0F2B3C;
+  --navy-light: #153A50;
+  --orange: #E8751A;
+  --orange-light: #F09030;
+  --orange-glow: rgba(232,117,26,0.15);
+  --gold: #F5B731;
+  --white: #FFFFFF;
+  --off-white: #F7F5F0;
+  --warm-gray: #E8E4DD;
+  --text: #2A2A2A;
+  --text-light: #6B6B6B;
+  --text-on-dark: #C8D6DE;
+  --green: #2ECC71;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+  --shadow-xl: 0 30px 80px rgba(0,0,0,0.18);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15,43,60,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: var(--transition);
+}
+.navbar.scrolled { background: rgba(15,43,60,0.98); box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+.navbar .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--white);
+}
+.logo-icon {
+  width: 44px; height: 44px; background: var(--orange);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 11px; color: var(--white);
+  letter-spacing: -0.3px; line-height: 1.1; text-align: center;
+}
+.logo-text { font-weight: 700; font-size: 18px; letter-spacing: -0.3px; }
+.logo-text span { color: var(--orange); }
+
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--text-on-dark); text-decoration: none; font-size: 14px;
+  font-weight: 500; letter-spacing: 0.2px; transition: var(--transition);
+}
+.nav-links a:hover { color: var(--white); }
+
+.btn-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--orange); color: var(--white);
+  padding: 12px 28px; border-radius: 50px; font-weight: 600;
+  font-size: 14px; text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.3s ease; letter-spacing: 0.2px;
+  box-shadow: 0 4px 15px rgba(232,117,26,0.3);
+}
+.btn-cta:hover {
+  background: var(--orange-light); transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(232,117,26,0.4);
+}
+
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+.mobile-toggle span {
+  display: block; width: 24px; height: 2px; background: var(--white);
+  margin: 5px 0; transition: var(--transition);
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative; min-height: 100vh;
+  background: linear-gradient(165deg, var(--navy) 0%, #0A1F2E 50%, #071820 100%);
+  display: flex; align-items: center;
+  padding-top: 72px; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-glow {
+  position: absolute; top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(232,117,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute; bottom: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(46,204,113,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero .container { position: relative; z-index: 2; text-align: center; padding: 60px 24px 80px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(232,117,26,0.12); border: 1px solid rgba(232,117,26,0.25);
+  color: var(--orange-light); padding: 8px 20px; border-radius: 50px;
+  font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before { content: '⚡'; font-size: 14px; }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800; color: var(--white);
+  line-height: 1.1; margin-bottom: 24px;
+  letter-spacing: -1px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+.hero h1 .highlight {
+  color: var(--orange);
+  text-shadow: 0 0 60px rgba(232,117,26,0.3);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-on-dark); max-width: 680px; margin: 0 auto 48px;
+  line-height: 1.7; font-weight: 400;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+/* PLAN STEPS IN HERO */
+.hero-steps {
+  display: flex; justify-content: center; gap: 16px;
+  margin-bottom: 40px; flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-step {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 20px; border-radius: 50px;
+}
+.hero-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--orange); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+.hero-step-text { color: var(--white); font-size: 14px; font-weight: 500; }
+
+.hero-cta-group {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+.btn-hero {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--orange); color: var(--white);
+  padding: 18px 44px; border-radius: 60px; font-weight: 700;
+  font-size: 17px; text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.3s ease; letter-spacing: 0.3px;
+  box-shadow: 0 8px 30px rgba(232,117,26,0.35);
+}
+.btn-hero:hover {
+  background: var(--orange-light); transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(232,117,26,0.45);
+}
+.btn-hero svg { width: 18px; height: 18px; }
+
+.hero-stakes {
+  color: rgba(200,214,222,0.6); font-size: 14px; font-style: italic;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+
+/* ===== STATS BAR ===== */
+.stats {
+  background: var(--white);
+  margin-top: -40px; position: relative; z-index: 10;
+}
+.stats-inner {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  max-width: 960px; margin: 0 auto;
+  overflow: hidden;
+}
+.stat-item {
+  padding: 36px 24px; text-align: center;
+  border-right: 1px solid var(--warm-gray);
+  transition: var(--transition);
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: var(--off-white); }
+.stat-icon { font-size: 28px; margin-bottom: 8px; }
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 800; color: var(--navy);
+  letter-spacing: -1px;
+}
+.stat-number span { font-size: 1.4rem; color: var(--orange); }
+.stat-label { font-size: 13px; color: var(--text-light); font-weight: 500; margin-top: 4px; letter-spacing: 0.3px; }
+
+/* ===== HOW IT WORKS ===== */
+.how-it-works {
+  padding: 120px 0;
+  background: var(--off-white);
+}
+.section-label {
+  display: inline-block; color: var(--orange); font-size: 13px;
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800;
+  color: var(--navy); line-height: 1.15; margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.section-subtitle {
+  font-size: 1.05rem; color: var(--text-light);
+  max-width: 580px; line-height: 1.7;
+}
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-header .section-subtitle { margin: 0 auto; }
+
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 32px; position: relative;
+}
+.steps-grid::before {
+  content: ''; position: absolute;
+  top: 60px; left: 16%; right: 16%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--warm-gray), var(--orange), var(--warm-gray));
+  opacity: 0.4; z-index: 0;
+}
+.step-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  padding: 40px 32px; text-align: center;
+  position: relative; z-index: 1;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s ease;
+}
+.step-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.step-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  color: var(--white); display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 800; margin: 0 auto 20px;
+  box-shadow: 0 6px 20px rgba(232,117,26,0.25);
+}
+.step-card h3 {
+  font-size: 1.15rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 12px;
+}
+.step-card p {
+  font-size: 0.95rem; color: var(--text-light);
+  line-height: 1.65;
+}
+
+/* ===== SOLUTIONS ===== */
+.solutions { padding: 120px 0; background: var(--white); }
+
+.solutions-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.solution-card {
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--white); border: 1px solid var(--warm-gray);
+  transition: all 0.4s ease;
+}
+.solution-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.solution-img {
+  height: 220px; overflow: hidden; position: relative;
+}
+.solution-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.solution-card:hover .solution-img img { transform: scale(1.08); }
+.solution-tag {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--orange); color: var(--white);
+  padding: 6px 14px; border-radius: 50px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.solution-body { padding: 28px; }
+.solution-body h3 {
+  font-size: 1.15rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 12px; line-height: 1.3;
+}
+.solution-body p {
+  font-size: 0.92rem; color: var(--text-light);
+  line-height: 1.65; margin-bottom: 20px;
+}
+.solution-price {
+  font-size: 0.85rem; color: var(--orange); font-weight: 600;
+  margin-bottom: 16px;
+}
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 24px; border-radius: 50px;
+  border: 2px solid var(--navy); color: var(--navy);
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background: var(--navy); color: var(--white);
+}
+
+/* ===== GUIDE / WHY US ===== */
+.guide {
+  padding: 120px 0;
+  background: linear-gradient(170deg, var(--navy) 0%, #0A1F2E 100%);
+  color: var(--white); position: relative; overflow: hidden;
+}
+.guide::before {
+  content: ''; position: absolute; top: -300px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(232,117,26,0.06) 0%, transparent 60%);
+}
+.guide .section-label { color: var(--orange-light); }
+.guide .section-title { color: var(--white); }
+
+.guide-empathy {
+  max-width: 700px; margin: 0 auto 64px; text-align: center;
+  font-size: 1.15rem; line-height: 1.8;
+  color: var(--text-on-dark); font-style: italic;
+  position: relative;
+}
+.guide-empathy::before {
+  content: '"'; position: absolute; top: -40px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 80px; color: var(--orange); opacity: 0.3;
+}
+
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.feature-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius); padding: 32px 28px;
+  transition: all 0.4s ease;
+}
+.feature-item:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(232,117,26,0.2);
+  transform: translateY(-4px);
+}
+.feature-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(232,117,26,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 16px;
+}
+.feature-item h4 {
+  font-size: 1rem; font-weight: 700; color: var(--white);
+  margin-bottom: 8px;
+}
+.feature-item p {
+  font-size: 0.88rem; color: var(--text-on-dark);
+  line-height: 1.6;
+}
+
+/* ===== PRICING ===== */
+.pricing {
+  padding: 120px 0;
+  background: var(--off-white);
+}
+
+.pricing-toggle {
+  display: flex; justify-content: center; gap: 4px;
+  background: var(--white); border-radius: 50px;
+  padding: 4px; width: fit-content; margin: 0 auto 16px;
+  box-shadow: var(--shadow-sm);
+}
+.pricing-toggle button {
+  padding: 10px 24px; border-radius: 50px; border: none;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: var(--transition); background: transparent; color: var(--text-light);
+}
+.pricing-toggle button.active { background: var(--orange); color: var(--white); }
+.pricing-note {
+  text-align: center; font-size: 13px; color: var(--text-light);
+  margin-bottom: 48px;
+}
+
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px; align-items: start;
+}
+.price-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  padding: 36px; border: 2px solid var(--warm-gray);
+  transition: all 0.4s ease; position: relative;
+}
+.price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.price-card.featured {
+  border-color: var(--orange);
+  background: linear-gradient(180deg, #FFF8F0 0%, var(--white) 30%);
+  box-shadow: var(--shadow-lg);
+}
+.price-card.featured::before {
+  content: '★ MOST POPULAR';
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--orange); color: var(--white);
+  padding: 6px 18px; border-radius: 50px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+}
+.price-tier {
+  font-size: 0.85rem; font-weight: 700; color: var(--orange);
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;
+}
+.price-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 800; color: var(--navy);
+  margin-bottom: 4px;
+}
+.price-desc {
+  font-size: 0.88rem; color: var(--text-light);
+  margin-bottom: 20px; line-height: 1.5;
+}
+.price-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem; font-weight: 800; color: var(--navy);
+  margin-bottom: 0;
+}
+.price-amount small { font-size: 1rem; font-weight: 500; color: var(--text-light); }
+.price-savings {
+  display: inline-block;
+  background: #E8F5E9; color: #2E7D32;
+  padding: 6px 14px; border-radius: 50px;
+  font-size: 13px; font-weight: 600; margin: 12px 0 24px;
+}
+.price-features { list-style: none; margin-bottom: 28px; }
+.price-features li {
+  display: flex; align-items: start; gap: 10px;
+  padding: 8px 0; font-size: 0.9rem; color: var(--text);
+}
+.price-features li::before {
+  content: '✓'; color: var(--green); font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+.btn-price {
+  display: block; text-align: center; width: 100%;
+  padding: 14px; border-radius: 50px; font-weight: 600;
+  font-size: 15px; text-decoration: none;
+  transition: all 0.3s ease; cursor: pointer; border: none;
+}
+.btn-price.primary { background: var(--orange); color: var(--white); box-shadow: 0 4px 15px rgba(232,117,26,0.25); }
+.btn-price.primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+.btn-price.secondary { background: var(--off-white); color: var(--navy); border: 2px solid var(--navy); }
+.btn-price.secondary:hover { background: var(--navy); color: var(--white); }
+
+/* Custom plan CTA */
+.custom-plan {
+  margin-top: 48px; text-align: center;
+  background: var(--navy); border-radius: var(--radius-lg);
+  padding: 48px 32px; color: var(--white);
+}
+.custom-plan h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 800; margin-bottom: 12px;
+}
+.custom-plan p {
+  color: var(--text-on-dark); max-width: 520px; margin: 0 auto 24px;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.pricing-fine {
+  text-align: center; margin-top: 20px;
+  font-size: 12px; color: var(--text-light);
+}
+
+/* ===== WATER SECTION ===== */
+.water-section {
+  padding: 80px 0;
+  background: var(--white);
+  text-align: center;
+}
+.water-section p {
+  max-width: 600px; margin: 0 auto 28px;
+  font-size: 1rem; color: var(--text-light); line-height: 1.7;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  padding: 120px 0;
+  background: var(--off-white);
+}
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.testimonial-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  padding: 32px; box-shadow: var(--shadow-sm);
+  border: 1px solid var(--warm-gray);
+  transition: all 0.4s ease;
+}
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.testimonial-stars {
+  color: var(--gold); font-size: 18px; margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.testimonial-text {
+  font-size: 0.95rem; line-height: 1.7; color: var(--text);
+  margin-bottom: 20px; font-style: italic;
+}
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--navy); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 16px;
+}
+.testimonial-name { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+.testimonial-detail { font-size: 0.8rem; color: var(--text-light); }
+
+/* ===== FAQ ===== */
+.faq { padding: 120px 0; background: var(--white); }
+.faq-list { max-width: 740px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--warm-gray);
+}
+.faq-question {
+  width: 100%; background: none; border: none;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 0; cursor: pointer; text-align: left;
+  font-size: 1rem; font-weight: 600; color: var(--navy);
+  transition: var(--transition);
+}
+.faq-question:hover { color: var(--orange); }
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--off-white); display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--orange); flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.faq-item.open .faq-icon { background: var(--orange); color: var(--white); transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+.faq-item.open .faq-answer { max-height: 300px; padding-bottom: 24px; }
+.faq-answer p {
+  font-size: 0.92rem; color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  padding: 120px 0;
+  background: linear-gradient(170deg, var(--navy), #071820);
+  position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(232,117,26,0.06) 0%, transparent 60%);
+}
+.final-cta .container {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start; position: relative; z-index: 2;
+}
+.final-cta-text .section-label { color: var(--orange-light); }
+.final-cta-text .section-title { color: var(--white); margin-bottom: 20px; }
+.final-cta-text p {
+  color: var(--text-on-dark); font-size: 1rem; line-height: 1.7;
+  margin-bottom: 32px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 16px; }
+.contact-row {
+  display: flex; align-items: center; gap: 14px;
+  color: var(--text-on-dark); font-size: 0.95rem;
+}
+.contact-row-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(232,117,26,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+
+.quote-form {
+  background: var(--white); border-radius: var(--radius-lg);
+  padding: 40px; box-shadow: var(--shadow-xl);
+}
+.quote-form h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 800; color: var(--navy);
+  margin-bottom: 4px;
+}
+.quote-form .form-sub {
+  font-size: 0.88rem; color: var(--text-light); margin-bottom: 28px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 12px; font-weight: 600; color: var(--navy);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.form-group input, .form-group select, .form-group textarea {
+  padding: 12px 16px; border: 1px solid var(--warm-gray);
+  border-radius: 10px; font-size: 14px; font-family: 'DM Sans', sans-serif;
+  color: var(--text); transition: var(--transition);
+  background: var(--off-white);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--orange);
+  box-shadow: 0 0 0 3px var(--orange-glow);
+}
+.form-group textarea { resize: vertical; min-height: 80px; }
+.btn-submit {
+  width: 100%; margin-top: 8px; padding: 16px;
+  background: var(--orange); color: var(--white);
+  border: none; border-radius: 50px; font-size: 16px;
+  font-weight: 700; cursor: pointer; transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(232,117,26,0.3);
+}
+.btn-submit:hover {
+  background: var(--orange-light); transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(232,117,26,0.4);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #070F15; padding: 60px 0 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand p {
+  color: var(--text-on-dark); font-size: 0.9rem;
+  line-height: 1.7; margin-top: 16px; max-width: 340px;
+}
+.footer h4 {
+  color: var(--white); font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  color: var(--text-on-dark); text-decoration: none;
+  font-size: 0.88rem; transition: var(--transition);
+}
+.footer-links a:hover { color: var(--orange); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px; text-align: center;
+  font-size: 0.8rem; color: rgba(200,214,222,0.4);
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  transition: all 0.3s ease;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid, .solutions-grid, .features-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .steps-grid::before { display: none; }
+  .final-cta .container { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-steps { flex-direction: column; align-items: center; }
+}
+@media (max-width: 600px) {
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { padding: 24px 16px; }
+  .stat-number { font-size: 1.8rem; }
+  .hero { padding-top: 60px; }
+  .how-it-works, .solutions, .guide, .pricing, .testimonials, .faq, .final-cta { padding: 80px 0; }
+  .quote-form { padding: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="logo">
+      <div class="logo-icon">W|S</div>
+      <div class="logo-text">Waterlift <span>Solar</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <a href="#contact" class="btn-cta">Get My Free Solar Quote →</a>
+    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-badge">Trusted by 2,400+ Homes, Schools & Farms</div>
+    <h1>Stop Overpaying for<br><span class="highlight">Unreliable Power</span></h1>
+    <p class="hero-subtitle">Waterlift Solar installs, maintains, and guarantees your solar system — with rent, rent-to-own, or cash options. You save up to 75% on your power bill from month one.</p>
+    
+    <div class="hero-steps">
+      <div class="hero-step">
+        <div class="hero-step-num">1</div>
+        <span class="hero-step-text">Enter Your Location</span>
+      </div>
+      <div class="hero-step">
+        <div class="hero-step-num">2</div>
+        <span class="hero-step-text">Get Your Personalised Quote</span>
+      </div>
+      <div class="hero-step">
+        <div class="hero-step-num">3</div>
+        <span class="hero-step-text">Start Saving</span>
+      </div>
+    </div>
+
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-hero">Get My Free Solar Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <p class="hero-stakes">Every month you wait, you are paying Kenya Power instead of yourself.</p>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-inner reveal">
+      <div class="stat-item">
+        <div class="stat-icon">🗺️</div>
+        <div class="stat-number">47</div>
+        <div class="stat-label">Counties Covered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-number">2,400<span>+</span></div>
+        <div class="stat-label">Systems Running</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">📉</div>
+        <div class="stat-number">75<span>%</span></div>
+        <div class="stat-label">Average Savings</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">💡</div>
+        <div class="stat-number">28.45<span> KES</span></div>
+        <div class="stat-label">Per kWh You Keep</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Your Path to Energy Independence</span>
+      <h2 class="section-title">Three Simple Steps.<br>Real Savings From Month One.</h2>
+      <p class="section-subtitle">From your first click to powered home — the entire journey takes less than five minutes online.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h3>Tell Us Where You Are</h3>
+        <p>Enter your address and drop a pin on the map. We use satellite data to assess your roof and solar potential — instantly.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h3>Get Your Personalised Solar Plan</h3>
+        <p>We calculate your savings, recommend the right system size, and show you flexible payment options — rent, rent-to-own, or pay cash.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h3>We Install. You Start Saving.</h3>
+        <p>Our certified engineers handle everything — survey, mounting, wiring, and commissioning — at zero extra cost. Savings begin from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Find Your Solar Solution</span>
+      <h2 class="section-title">Whether You Run a Home,<br>a Business, or a Farm</h2>
+      <p class="section-subtitle">We have a system built for your exact needs.</p>
+    </div>
+    <div class="solutions-grid">
+      <div class="solution-card reveal">
+        <div class="solution-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop" alt="Home solar installation" loading="lazy">
+          <span class="solution-tag">Residential</span>
+        </div>
+        <div class="solution-body">
+          <h3>Power Your Home Without the Bill Shock</h3>
+          <p>Imagine running your lights, fridge, TV, and washing machine without dreading the end of the month. Our home solar systems cut your power bill by up to 75%.</p>
+          <div class="solution-price">From KES 3,500 per month · Zero upfront cost</div>
+          <a href="#contact" class="btn-outline">Get My Home Solar Quote →</a>
+        </div>
+      </div>
+      <div class="solution-card reveal">
+        <div class="solution-img">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=600&h=400&fit=crop" alt="Commercial solar" loading="lazy">
+          <span class="solution-tag">Commercial</span>
+        </div>
+        <div class="solution-body">
+          <h3>Cut Operating Costs. Run Without Interruption.</h3>
+          <p>Schools lose teaching hours. Supermarkets lose stock. Offices lose productivity. All because of unreliable power. Our commercial systems keep you running.</p>
+          <div class="solution-price">Custom sizing available</div>
+          <a href="#contact" class="btn-outline">Get a Commercial Quote →</a>
+        </div>
+      </div>
+      <div class="solution-card reveal">
+        <div class="solution-img">
+          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop" alt="Farm solar irrigation" loading="lazy">
+          <span class="solution-tag">Agriculture</span>
+        </div>
+        <div class="solution-body">
+          <h3>Water and Power for Your Farm — Even Off-Grid</h3>
+          <p>Your borehole pump, irrigation system, and farm equipment need power that does not depend on Kenya Power or expensive diesel. We keep your water flowing.</p>
+          <div class="solution-price">Borehole-ready Premium package</div>
+          <a href="#contact" class="btn-outline">Get My Farm Solar Quote →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDE / WHY US -->
+<section class="guide">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Your Trusted Guide</span>
+      <h2 class="section-title">We Have Done This 2,400 Times.<br>We Know What Works.</h2>
+    </div>
+    <div class="guide-empathy reveal">
+      We understand the frustration of paying more every month for electricity that cuts off without warning. We built Waterlift Solar because we believe every Kenyan deserves reliable, affordable energy. Here is how we deliver on that promise.
+    </div>
+    <div class="features-grid">
+      <div class="feature-item reveal">
+        <div class="feature-icon">🔧</div>
+        <h4>Free Professional Installation</h4>
+        <p>Our certified engineers handle every detail — site survey, mounting, wiring, and commissioning. You pay nothing extra.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon">🛡️</div>
+        <h4>Lifetime Maintenance</h4>
+        <p>Rent and Rent-to-Own customers get ongoing maintenance at zero cost, for life. If something breaks, we fix it.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon">📡</div>
+        <h4>24/7 Remote Monitoring</h4>
+        <p>We watch your system around the clock. We detect and fix issues before you even notice them.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon">💧</div>
+        <h4>Borehole Specialists</h4>
+        <p>We are one of the few providers who properly size solar for borehole pump surge loads. Your water never stops.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon">🇰🇪</div>
+        <h4>Truly National</h4>
+        <p>From Mombasa to Mandera, no area is too remote for our team. All 47 counties, no exceptions.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon">💳</div>
+        <h4>Flexible Payment</h4>
+        <p>Rent from as low as KES 3,500 per month. Rent-to-Own for 72 months. Or save more by paying cash upfront.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Choose Your Savings Plan</span>
+      <h2 class="section-title">Every Plan Includes Installation,<br>Quality Equipment & Real Savings</h2>
+      <p class="section-subtitle">Pick the payment model that fits your life.</p>
+    </div>
+    <div class="pricing-toggle reveal">
+      <button class="active">Rent Only</button>
+      <button>Rent-to-Own</button>
+      <button>Pay Cash</button>
+    </div>
+    <p class="pricing-note reveal">No ownership · Lifetime maintenance included</p>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-tier">1.5 kW</div>
+        <div class="price-name">Essential</div>
+        <div class="price-desc">Reliable power for small homes and apartments</div>
+        <div class="price-amount">KES 3,500<small>/mo</small></div>
+        <div class="price-savings">↓ Save up to KES 2,800/mo</div>
+        <ul class="price-features">
+          <li>Up to 8 LED lights</li>
+          <li>TV + refrigerator</li>
+          <li>Phone & device charging</li>
+          <li>Basic system monitoring</li>
+          <li>1-year free maintenance</li>
+        </ul>
+        <a href="#contact" class="btn-price secondary">Start Saving with Essential →</a>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-tier">3.0 kW</div>
+        <div class="price-name">Standard</div>
+        <div class="price-desc">Full home power for medium homes & offices</div>
+        <div class="price-amount">KES 6,500<small>/mo</small></div>
+        <div class="price-savings">↓ Save up to KES 5,800/mo</div>
+        <ul class="price-features">
+          <li>Full home lighting</li>
+          <li>TV + fridge + washing machine</li>
+          <li>Small water pump support</li>
+          <li>24/7 remote monitoring</li>
+          <li>Lifetime maintenance</li>
+        </ul>
+        <a href="#contact" class="btn-price primary">Start Saving with Standard →</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-tier">5.0 kW · Borehole Ready</div>
+        <div class="price-name">Premium</div>
+        <div class="price-desc">Total property coverage + borehole pump</div>
+        <div class="price-amount">KES 11,000<small>/mo</small></div>
+        <div class="price-savings">↓ Save up to KES 9,500/mo</div>
+        <ul class="price-features">
+          <li>Full property coverage</li>
+          <li>Borehole pump support</li>
+          <li>Air conditioning ready</li>
+          <li>Priority 24/7 support</li>
+          <li>Lifetime maintenance + monitoring</li>
+        </ul>
+        <a href="#contact" class="btn-price secondary">Start Saving with Premium →</a>
+      </div>
+    </div>
+
+    <div class="custom-plan reveal">
+      <h3>Not Sure Which Plan Fits?</h3>
+      <p>Tell us about your property and we will build a custom solar plan based on your actual roof and bill. It takes less than five minutes and costs nothing.</p>
+      <a href="#contact" class="btn-hero">Get My Personalised Solar Plan →</a>
+    </div>
+    <p class="pricing-fine">All prices include installation & VAT. Subject to free site survey. Savings estimated at KES 28.45/kWh · 75% solar yield.</p>
+  </div>
+</section>
+
+<!-- WATER SECTION -->
+<section class="water-section reveal">
+  <div class="container">
+    <span class="section-label">Need Clean Water Too?</span>
+    <h2 class="section-title">We Are More Than Solar</h2>
+    <p>Waterlift also delivers borehole drilling, equipping, water storage towers, and hydrogeological surveys across all 47 counties. One company for energy and water independence.</p>
+    <a href="https://waterliftsolar.africa" class="btn-outline" target="_blank">Explore Water Solutions at waterliftsolar.africa →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Customer Stories</span>
+      <h2 class="section-title">2,400+ Kenyans Already Saving.<br>Here Is What They Say.</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My KPLC bill dropped from KES 12,000 to under KES 3,500 per month. The Waterlift team installed the system in one day and I have not had a single blackout since. I wish I had done this years ago."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JM</div>
+          <div>
+            <div class="testimonial-name">James Mwangi</div>
+            <div class="testimonial-detail">Kiambu · Standard Plan, Rent-to-Own</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Running a small hotel on the Coast, power cuts were costing us guests. Since Waterlift installed our commercial system, we have had zero downtime. Highly recommend to any business owner."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">FH</div>
+          <div>
+            <div class="testimonial-name">Fatuma Hassan</div>
+            <div class="testimonial-detail">Mombasa · Commercial, Pay Cash</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I was sceptical about solar powering my borehole pump surge. The Premium package handles the pump surge to perfection. My dairy farm now runs entirely off-grid."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PK</div>
+          <div>
+            <div class="testimonial-name">Peter Kariuki</div>
+            <div class="testimonial-detail">Nanyuki · Premium, Rent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Questions Before You Switch?</span>
+      <h2 class="section-title">Everything You Need to Know</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question">How long does installation take? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Most systems are installed in a single day. Larger commercial setups may take two to three days. Either way, our team handles everything from survey to switch-on — you do not need to lift a finger.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do I own the system on the Rent plan? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>On the Rent Only plan, Waterlift owns and maintains the system. You enjoy the savings with zero responsibility for repairs. If you want ownership, choose our Rent-to-Own option.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What happens after the 72-month Rent-to-Own period? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>The system is yours. Fully paid. You continue enjoying free solar power with no monthly payments — for the entire remaining lifespan of the system.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Will solar work during the rainy season? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Yes. Solar panels generate power even on cloudy days. Our systems include battery backup so you have power day and night, rain or shine. Kenya receives excellent solar irradiance year-round.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can solar power my borehole pump? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Absolutely. Our Premium package is specifically designed for borehole pump surge loads. We are one of the few companies in Kenya that specialise in sizing solar systems for high-draw water equipment.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Is there a site survey before installation? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Yes, and it is completely free. Our engineers visit your property, assess your roof, measure your energy needs, and design a system tailored to you — at no cost and no obligation.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA / CONTACT -->
+<section class="final-cta" id="contact">
+  <div class="container">
+    <div class="final-cta-text reveal">
+      <span class="section-label">Ready to Take Control?</span>
+      <h2 class="section-title">Your Power Bill Does Not Have to Control Your Life</h2>
+      <p>Fill in the form and our team will reach out within 24 hours with a personalised solar plan and savings estimate — completely free, no obligation.</p>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-row-icon">📞</div>
+          <span>+254 768 171 070</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">💬</div>
+          <span>+254 768 171 070 (WhatsApp)</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">✉️</div>
+          <span>info@waterlift.co.ke</span>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">🕐</div>
+          <span>Monday – Friday: 7:00 AM – 5:00 PM &nbsp;|&nbsp; Saturday: 8:00 AM – 2:00 PM</span>
+        </div>
+      </div>
+    </div>
+    <div class="quote-form reveal">
+      <h3>Get My Free Solar Quote</h3>
+      <p class="form-sub">Tell us about your property and we will show you exactly how much you can save.</p>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="John Kamau"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+254 7XX XXX XXX"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+        <div class="form-group"><label>Your County</label>
+          <select><option value="">Select county...</option><option>Nairobi</option><option>Kiambu</option><option>Mombasa</option><option>Nakuru</option><option>Uasin Gishu</option><option>Machakos</option><option>Kajiado</option><option>Other</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Property Type</label>
+          <select><option value="">Select type...</option><option>Residential Home</option><option>Apartment</option><option>School</option><option>Commercial/Office</option><option>Farm/Agricultural</option><option>Other</option></select>
+        </div>
+        <div class="form-group"><label>Interested In</label>
+          <select><option value="">Select option...</option><option>Rent Only</option><option>Rent-to-Own</option><option>Pay Cash</option><option>Not Sure Yet</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full"><label>Message (Optional)</label><textarea placeholder="Tell us about your property, monthly bill, or any specific needs..."></textarea></div>
+      </div>
+      <button class="btn-submit">☀️ Show Me My Savings →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">W|S</div>
+          <div class="logo-text">Waterlift <span>Solar</span></div>
+        </a>
+        <p>Reliable solar energy and clean water for homes, schools, and farms across all 47 counties in Kenya.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>All Services</h4>
+        <ul class="footer-links">
+          <li><a href="#">Residential Solar</a></li>
+          <li><a href="#">Commercial Solar</a></li>
+          <li><a href="#">Borehole Drilling</a></li>
+          <li><a href="#">Water Heating Solutions</a></li>
+          <li><a href="#">Water Storage Towers</a></li>
+          <li><a href="#">Online Shop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Waterlift Solar Limited. All rights reserved. Excellent access to solar energy and borehole drilling, serving all 47 counties across Kenya.
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/254768171070" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">💬</a>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Pricing toggle (visual only)
+document.querySelectorAll('.pricing-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pricing-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

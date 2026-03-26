@@ -5,87 +5,116 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   const navLinks = [
     { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Use Cases',    href: '#use-cases' },
-    { label: 'Packages',     href: '#packages' },
-    { label: 'Contact',      href: '#contact' },
+    { label: 'Solutions',    href: '#use-cases' },
+    { label: 'Pricing',      href: '#packages' },
+    { label: 'Contact Us',   href: '#contact' },
   ]
 
+  const headerStyle = {
+    position: 'fixed', top: 0, left: 0, right: 0, zIndex: 9000,
+    background: scrolled ? 'rgba(15,43,60,0.98)' : 'rgba(15,43,60,0.95)',
+    backdropFilter: 'blur(20px)',
+    WebkitBackdropFilter: 'blur(20px)',
+    borderBottom: '1px solid rgba(255,255,255,0.05)',
+    boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.3)' : 'none',
+    transition: 'box-shadow 0.3s ease, background 0.3s ease',
+  }
+
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-[9000] transition-all duration-300"
-      style={{ background: scrolled ? '#0f2d52' : 'transparent' }}
-    >
-      <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
-        {/* Real logo */}
-        <a href="/">
+    <header style={headerStyle}>
+      <div className="max-w-7xl mx-auto pl-0 pr-6 flex items-center justify-between" style={{ height: 72 }}>
+
+        {/* Logo */}
+        <a href="/" className="shrink-0"
+          style={{
+            display: 'inline-flex', alignItems: 'center',
+            background: 'white',
+            borderRadius: '0 10px 10px 0',
+            padding: '4px 16px 4px 0',
+            boxShadow: '2px 2px 12px rgba(0,0,0,0.18)',
+          }}>
           <img
-            src="/images/logo.png"
+            src="/images/logo.jpeg"
             alt="Waterlift Solar"
-            className="h-12 object-contain"
+            style={{ height: 64, width: 'auto', objectFit: 'contain', display: 'block' }}
           />
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map(l => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium transition-colors"
-              style={{ color: scrolled ? '#e2e8f0' : 'white' }}
+              style={{ color: '#C8D6DE', fontSize: 14, fontWeight: 500, letterSpacing: '0.2px', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#C8D6DE'}
             >
               {l.label}
             </a>
           ))}
-          {/* Full website link — divider + external link */}
-          <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
+
+          {/* External website link */}
+          <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
           <a
             href="https://waterliftsolar.africa"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs font-semibold transition-colors hover:opacity-100"
-            style={{ color: scrolled ? '#94a3b8' : 'rgba(255,255,255,0.6)' }}
-            title="Borehole drilling, water towers, hydrogeological surveys & more"
+            style={{ color: 'rgba(200,214,222,0.6)', fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(200,214,222,0.6)'}
           >
             🌐 <span className="hidden lg:inline">waterliftsolar</span>.africa
           </a>
+
+          {/* CTA button */}
           <a
-            href="#contact"
-            className="text-sm font-bold px-5 py-2.5 rounded-full transition-colors"
-            style={{ background: '#f97316', color: 'white' }}
+            href="#hero"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: '#E8751A', color: '#fff',
+              padding: '12px 28px', borderRadius: 50, fontWeight: 600,
+              fontSize: 14, textDecoration: 'none',
+              boxShadow: '0 4px 15px rgba(232,117,26,0.3)',
+              transition: 'all 0.3s ease', letterSpacing: '0.2px',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#F09030'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 25px rgba(232,117,26,0.4)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#E8751A'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(232,117,26,0.3)' }}
           >
-            Get Free Quote
+            Get My Free Solar Quote →
           </a>
         </nav>
 
         {/* Mobile burger */}
         <button
-          className="md:hidden text-white p-2"
+          className="md:hidden p-2"
           onClick={() => setMenuOpen(o => !o)}
           aria-label="Toggle menu"
+          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         >
-          <div className={`w-6 h-0.5 bg-white mb-1.5 transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <div className={`w-6 h-0.5 bg-white mb-1.5 transition-all ${menuOpen ? 'opacity-0' : ''}`} />
-          <div className={`w-6 h-0.5 bg-white transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <div style={{ width: 24, height: 2, background: '#fff', marginBottom: 5, transition: 'all 0.3s', transform: menuOpen ? 'rotate(45deg) translate(5px,5px)' : 'none' }} />
+          <div style={{ width: 24, height: 2, background: '#fff', marginBottom: 5, transition: 'all 0.3s', opacity: menuOpen ? 0 : 1 }} />
+          <div style={{ width: 24, height: 2, background: '#fff', transition: 'all 0.3s', transform: menuOpen ? 'rotate(-45deg) translate(5px,-5px)' : 'none' }} />
         </button>
       </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden px-5 pb-5 pt-2 flex flex-col gap-4" style={{ background: '#0f2d52' }}>
+        <div className="md:hidden px-6 pb-6 pt-3 flex flex-col gap-4"
+          style={{ background: 'rgba(15,43,60,0.98)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           {navLinks.map(l => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setMenuOpen(false)}
-              className="text-white/90 text-sm font-medium py-1 border-b border-white/10"
+              style={{ color: 'rgba(200,214,222,0.85)', fontSize: 14, fontWeight: 500, paddingBottom: 12, borderBottom: '1px solid rgba(255,255,255,0.08)', textDecoration: 'none' }}
             >
               {l.label}
             </a>
@@ -94,17 +123,16 @@ export default function Header() {
             href="https://waterliftsolar.africa"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 py-2.5 rounded-full text-sm font-semibold border border-white/20 text-white/70 hover:text-white transition-colors"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '10px 0', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 50, color: 'rgba(200,214,222,0.7)', fontSize: 13, fontWeight: 600, textDecoration: 'none' }}
           >
-            🌐 waterliftsolar.africa — More Services
+            🌐 waterliftsolar.africa
           </a>
           <a
-            href="#contact"
+            href="#hero"
             onClick={() => setMenuOpen(false)}
-            className="text-center font-bold py-3 rounded-full text-white text-sm"
-            style={{ background: '#f97316' }}
+            style={{ textAlign: 'center', fontWeight: 700, padding: '14px 0', borderRadius: 50, color: '#fff', fontSize: 14, background: '#E8751A', textDecoration: 'none', boxShadow: '0 4px 15px rgba(232,117,26,0.3)' }}
           >
-            Get Free Quote
+            Get My Free Solar Quote →
           </a>
         </div>
       )}

@@ -39,22 +39,15 @@ function calcSavings(bill, coverageFraction, regionMultiplier) {
 
 // ── Price block ───────────────────────────────────────────────────────────────
 function PriceBlock({ pkg, tab }) {
-  if (tab === 'rent') return (
-    <div className="text-center">
-      <div className="text-4xl font-black text-white">KES {pkg.rent.monthly.toLocaleString()}</div>
-      <div className="text-white/60 text-xs mt-1">per month · no ownership</div>
-    </div>
-  )
-  if (tab === 'rto') return (
-    <div className="text-center">
-      <div className="text-4xl font-black text-white">KES {pkg.rto.monthly.toLocaleString()}</div>
-      <div className="text-white/60 text-xs mt-1">per month · {pkg.rto.months} months to own</div>
-    </div>
-  )
+  const content = tab === 'rent'
+    ? { main: `KES ${pkg.rent.monthly.toLocaleString()}`, sub: 'per month · no ownership' }
+    : tab === 'rto'
+    ? { main: `KES ${pkg.rto.monthly.toLocaleString()}`, sub: `per month · ${pkg.rto.months} months to own` }
+    : { main: `KES ${pkg.cash.price.toLocaleString()}`, sub: `one-time · ROI in ~${pkg.cash.roi}` }
   return (
-    <div className="text-center">
-      <div className="text-4xl font-black text-white">KES {pkg.cash.price.toLocaleString()}</div>
-      <div className="text-white/60 text-xs mt-1">one-time · ROI in ~{pkg.cash.roi}</div>
+    <div className="rounded-2xl px-5 py-4" style={{ background: 'rgba(0,0,0,0.2)' }}>
+      <div className="text-3xl font-black text-white leading-tight">{content.main}</div>
+      <div className="text-white/60 text-xs mt-1">{content.sub}</div>
     </div>
   )
 }
@@ -205,7 +198,7 @@ export default function PricingMatrix({ location, answers, onSelectPackage }) {
               <motion.div key={activeTab}
                 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.25 }}
-                className={`grid gap-6 ${visiblePackages.length === 1 ? 'max-w-sm mx-auto' : 'grid-cols-1 md:grid-cols-3'}`}>
+                className={`grid gap-8 items-stretch ${visiblePackages.length === 1 ? 'max-w-sm mx-auto' : 'grid-cols-1 md:grid-cols-3'}`}>
 
                 {visiblePackages.map((pkg, idx) => {
                   const isRec   = pkg.id === recommended
@@ -216,56 +209,65 @@ export default function PricingMatrix({ location, answers, onSelectPackage }) {
                     <motion.div key={pkg.id}
                       initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.35, delay }}
-                      className="relative flex flex-col rounded-3xl overflow-hidden"
+                      className="relative flex flex-col rounded-3xl overflow-hidden bg-white"
                       style={{
+                        border: isRec ? '2px solid #f97316' : '1px solid #e2e8f0',
                         boxShadow: isRec
-                          ? '0 20px 60px rgba(249,115,22,0.25), 0 4px 16px rgba(0,0,0,0.1)'
-                          : '0 4px 20px rgba(0,0,0,0.08)',
-                        transform: isRec ? 'scale(1.03)' : 'scale(1)',
+                          ? '0 0 0 4px rgba(249,115,22,0.12), 0 24px 64px rgba(249,115,22,0.22), 0 4px 20px rgba(0,0,0,0.08)'
+                          : '0 4px 20px rgba(0,0,0,0.06)',
                       }}>
 
-                      {/* Gradient header */}
-                      <div className="relative px-7 pt-8 pb-10" style={{ background: pkg.gradient }}>
-                        {isRec && (
-                          <div className="absolute top-4 right-4 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wide"
-                            style={{ background: '#f59e0b', color: '#0f2d52' }}>
-                            ★ Recommended
-                          </div>
-                        )}
+                      {/* Recommended ribbon — replaces the overlapping badge */}
+                      {isRec ? (
+                        <div className="flex items-center justify-center gap-2 py-2.5"
+                          style={{ background: 'linear-gradient(90deg, #ea580c, #f97316, #fb923c)', color: 'white' }}>
+                          <span className="text-sm">⭐</span>
+                          <span className="text-xs font-black tracking-widest uppercase">Recommended for You</span>
+                          <span className="text-sm">⭐</span>
+                        </div>
+                      ) : (
+                        <div className="py-2.5" style={{ background: '#f8fafc' }} />
+                      )}
 
-                        <div className="text-4xl mb-3">{pkg.icon}</div>
-                        <h3 className="text-2xl font-extrabold text-white">{pkg.name}</h3>
-                        <div className="flex items-center gap-2 mt-1 mb-6">
-                          <span className="text-xs font-bold px-2.5 py-1 rounded-full"
+                      {/* Coloured header */}
+                      <div className="px-7 pt-6 pb-6" style={{ background: pkg.gradient }}>
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="text-4xl leading-none">{pkg.icon}</div>
+                          <span className="text-xs font-bold px-3 py-1 rounded-full"
                             style={{ background: 'rgba(255,255,255,0.2)', color: 'white' }}>
                             {pkg.capacity}
                           </span>
-                          <span className="text-white/60 text-xs">{pkg.tagline}</span>
                         </div>
-
+                        <h3 className="text-xl font-extrabold text-white mb-1">{pkg.name}</h3>
+                        {pkg.tagline && (
+                          <p className="text-white/70 text-xs mb-4 leading-relaxed">{pkg.tagline}</p>
+                        )}
                         <PriceBlock pkg={pkg} tab={activeTab} />
                       </div>
 
                       {/* White body */}
-                      <div className="flex-1 flex flex-col bg-white px-7 pb-7">
-                        {/* Savings badge */}
-                        <div className="flex items-center justify-between -mt-5 mb-6 rounded-2xl px-5 py-3.5 shadow-md"
-                          style={{ background: 'white', border: '2px solid #dcfce7' }}>
+                      <div className="flex-1 flex flex-col px-7 pt-5 pb-7">
+
+                        {/* Savings badge — clean, no negative margin */}
+                        <div className="flex items-center gap-3 rounded-xl px-4 py-3 mb-5"
+                          style={{ background: isRec ? '#fff7ed' : '#f0fdf4', border: `1px solid ${isRec ? '#fed7aa' : '#bbf7d0'}` }}>
+                          <span className="text-xl leading-none">{isRec ? '🔥' : '📉'}</span>
                           <div>
-                            <p className="text-xs font-semibold" style={{ color: '#16a34a' }}>Est. monthly savings</p>
-                            <p className="text-xl font-extrabold" style={{ color: '#15803d' }}>
-                              KES {savings.toLocaleString()}
+                            <p className="text-xs font-semibold" style={{ color: isRec ? '#c2410c' : '#16a34a' }}>
+                              {isRec ? 'Your best match — est. savings' : 'Est. monthly savings'}
+                            </p>
+                            <p className="text-base font-extrabold" style={{ color: isRec ? '#ea580c' : '#15803d' }}>
+                              KES {savings.toLocaleString()} / mo
                             </p>
                           </div>
-                          <div className="text-2xl">📉</div>
                         </div>
 
                         {/* Features */}
-                        <ul className="space-y-2.5 mb-7 flex-1">
+                        <ul className="space-y-3 mb-7 flex-1">
                           {pkg.features.map((f, i) => (
-                            <li key={i} className="flex items-center gap-3 text-sm text-gray-600">
-                              <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
-                                style={{ background: '#fff7ed', color: '#f97316' }}>✓</span>
+                            <li key={i} className="flex items-start gap-3 text-sm text-gray-600 leading-snug">
+                              <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5"
+                                style={{ background: isRec ? '#fff7ed' : '#f0fdf4', color: isRec ? '#f97316' : '#16a34a' }}>✓</span>
                               {f}
                             </li>
                           ))}
@@ -274,12 +276,12 @@ export default function PricingMatrix({ location, answers, onSelectPackage }) {
                         {/* CTA */}
                         <a href="#contact"
                           onClick={() => onSelectPackage?.(pkg.name, TAB_LABEL[activeTab])}
-                          className="block text-center font-extrabold py-3.5 rounded-2xl text-sm transition-all hover:opacity-90"
+                          className="block text-center font-extrabold py-4 rounded-2xl text-sm transition-all hover:opacity-90"
                           style={isRec
-                            ? { background: pkg.gradient, color: 'white', boxShadow: '0 4px 14px rgba(249,115,22,0.3)' }
-                            : { background: '#f1f5f9', color: '#0f2d52' }
+                            ? { background: 'linear-gradient(135deg, #ea580c, #f97316)', color: 'white', boxShadow: '0 6px 20px rgba(249,115,22,0.4)', letterSpacing: '0.3px' }
+                            : { background: '#0f2d52', color: 'white' }
                           }>
-                          Get Started with {pkg.name} →
+                          {isRec ? '⭐ ' : ''}Start Saving with {pkg.name} →
                         </a>
                       </div>
                     </motion.div>

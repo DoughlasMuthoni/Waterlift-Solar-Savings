@@ -14,7 +14,7 @@ open_layout('Packages', 'packages');
   <div>
     <p class="text-sm text-slate-500 mt-0.5">Manage your solar package catalogue. Changes are reflected live on the website.</p>
   </div>
-  <a href="/waterlift_solat_savings/admin/package_form.php"
+  <a href="<?= ADMIN_BASE ?>/package_form.php"
      class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-white text-sm shrink-0"
      style="background:linear-gradient(135deg,#f97316,#c2410c)">
     <span class="material-icons text-base">add</span> Add New Package
@@ -107,7 +107,7 @@ open_layout('Packages', 'packages');
 
     <!-- Actions -->
     <div class="px-5 pb-5 flex gap-2">
-      <a href="/waterlift_solat_savings/admin/package_form.php?id=<?= $pkg['id'] ?>"
+      <a href="<?= ADMIN_BASE ?>/package_form.php?id=<?= $pkg['id'] ?>"
          class="flex-1 text-center text-xs font-bold py-2.5 rounded-xl text-white"
          style="background:#0f2d52">
         <span class="material-icons text-sm align-middle mr-1">edit</span>Edit
@@ -121,7 +121,7 @@ open_layout('Packages', 'packages');
   <?php endforeach; ?>
 
   <!-- Add new card -->
-  <a href="/waterlift_solat_savings/admin/package_form.php"
+  <a href="<?= ADMIN_BASE ?>/package_form.php"
      class="border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center p-10 text-slate-400 hover:border-orange-300 hover:text-orange-400 transition-all min-h-64">
     <span class="material-icons text-4xl mb-2">add_circle_outline</span>
     <span class="text-sm font-semibold">Add New Package</span>
@@ -131,7 +131,7 @@ open_layout('Packages', 'packages');
 <script>
 async function togglePackage(id, newActive, btn) {
   btn.disabled = true;
-  const res  = await fetch('/waterlift_solat_savings/admin/api/toggle_package.php', {
+  const res  = await fetch('<?= ADMIN_BASE ?>/api/toggle_package.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id, active: newActive }),
@@ -143,7 +143,7 @@ async function togglePackage(id, newActive, btn) {
 
 async function deletePackage(id, name) {
   if (!confirm(`Delete the "${name}" package? This cannot be undone.`)) return;
-  const res  = await fetch('/waterlift_solat_savings/admin/api/delete_package.php', {
+  const res  = await fetch('<?= ADMIN_BASE ?>/api/delete_package.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id }),

@@ -9,6 +9,12 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost',
         rewrite: path => '/waterlift_solat_savings' + path,
+        changeOrigin: true,
+      },
+      '/images/use-cases': {
+        target: 'http://localhost',
+        rewrite: path => '/waterlift_solat_savings' + path,
+        changeOrigin: true,
       },
     },
   },

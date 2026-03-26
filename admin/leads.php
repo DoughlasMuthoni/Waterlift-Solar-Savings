@@ -141,11 +141,11 @@ open_layout('All Leads', 'leads');
         style="background:#0f2d52">
         <span class="material-icons text-sm align-middle mr-1">search</span>Filter
       </button>
-      <a href="/waterlift_solat_savings/admin/leads.php"
+      <a href="<?= ADMIN_BASE ?>/leads.php"
         class="flex-1 sm:flex-none text-center px-5 py-2.5 rounded-xl font-bold text-sm border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors">
         Reset
       </a>
-      <a href="/waterlift_solat_savings/admin/api/export.php<?= qs() ?>"
+      <a href="<?= ADMIN_BASE ?>/api/export.php<?= qs() ?>"
         class="flex-1 sm:flex-none text-center px-5 py-2.5 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-1.5"
         style="background:#16a34a">
         <span class="material-icons text-base">download</span> CSV
@@ -218,7 +218,7 @@ open_layout('All Leads', 'leads');
           <td class="px-5 py-3.5 text-xs text-slate-400 whitespace-nowrap"><?= date('d M Y', strtotime($lead['created_at'])) ?></td>
           <td class="px-5 py-3.5">
             <div class="flex items-center gap-2">
-              <a href="/waterlift_solat_savings/admin/lead.php?id=<?= $lead['id'] ?>"
+              <a href="<?= ADMIN_BASE ?>/lead.php?id=<?= $lead['id'] ?>"
                  class="text-xs font-bold px-3 py-1.5 rounded-lg text-white" style="background:#0f2d52">View</a>
               <a href="https://wa.me/<?= preg_replace('/\D/','',$lead['phone']) ?>?text=Hello+<?= urlencode($lead['name']) ?>%2C+this+is+Waterlift+Solar..."
                  target="_blank"
@@ -275,7 +275,7 @@ open_layout('All Leads', 'leads');
     </div>
     <!-- Actions -->
     <div class="flex gap-2">
-      <a href="/waterlift_solat_savings/admin/lead.php?id=<?= $lead['id'] ?>"
+      <a href="<?= ADMIN_BASE ?>/lead.php?id=<?= $lead['id'] ?>"
          class="flex-1 text-center text-xs font-bold py-2 rounded-xl text-white" style="background:#0f2d52">View Details</a>
       <a href="https://wa.me/<?= preg_replace('/\D/','',$lead['phone']) ?>?text=Hello+<?= urlencode($lead['name']) ?>%2C+this+is+Waterlift+Solar..."
          target="_blank"
@@ -319,7 +319,7 @@ const STATUS_COLORS = {
 async function updateStatus(id, status, el) {
   el.disabled = true;
   try {
-    const res = await fetch('/waterlift_solat_savings/admin/api/update_lead.php', {
+    const res = await fetch('<?= ADMIN_BASE ?>/api/update_lead.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, status }),

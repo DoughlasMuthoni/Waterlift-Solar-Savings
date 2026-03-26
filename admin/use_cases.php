@@ -4,6 +4,14 @@ require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/layout.php';
 open_layout('Use Cases', 'use_cases');
 
+// Normalize a stored image_url for display in the admin
+function admin_img(string $url): string {
+    if (!$url) return '';
+    if (str_starts_with($url, 'http')) return $url;
+    if (!str_starts_with($url, '/')) $url = '/images/use-cases/' . $url;
+    return SITE_BASE . $url;
+}
+
 $cases = $pdo->query(
     "SELECT * FROM use_cases ORDER BY sort_order ASC, id ASC"
 )->fetchAll(PDO::FETCH_ASSOC);
@@ -29,7 +37,7 @@ $cases = $pdo->query(
     <!-- Image preview -->
     <div class="relative h-44 bg-slate-100 overflow-hidden">
       <?php if ($c['image_url']): ?>
-        <img src="<?= htmlspecialchars($c['image_url']) ?>" alt=""
+        <img src="<?= htmlspecialchars(admin_img($c['image_url'])) ?>" alt=""
              class="w-full h-full object-cover"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <?php endif; ?>

@@ -153,6 +153,7 @@ export default function Hero({ onLocationConfirmed }) {
           HERO SECTION
       ════════════════════════════════════════════════════════════════════ */}
       <section
+        id="hero"
         className="relative min-h-screen flex flex-col bg-cover bg-center"
         style={{ backgroundImage: "url('/images/solar-panels.jpg')" }}
       >
@@ -164,22 +165,27 @@ export default function Hero({ onLocationConfirmed }) {
 
           {/* Tag pill */}
           <span className="inline-block text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6" style={{ background: '#f97316', color: 'white' }}>
-            Kenya's #1 Solar Provider
+            Trusted by 105+ Homes, Schools &amp; Farms
           </span>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white text-center leading-tight max-w-3xl drop-shadow-lg">
-            Take Control of<br />
-            <span style={{ color: '#f59e0b' }}>Your Power Bill</span>
+            Stop Overpaying for<br />
+            <span style={{ color: '#f59e0b' }}>Unreliable Power</span>
           </h1>
           <p className="mt-5 text-lg sm:text-xl text-white/80 font-medium text-center max-w-xl">
-            Rent Only, Rent-to-Own &amp; Cash Solar — covering all 47 counties in Kenya.
+            Waterlift Solar installs, maintains, and guarantees your solar system — with rent, rent-to-own, or cash options. You save up to 75% on your power bill from month one.
           </p>
 
-          {/* Trust badges */}
+          {/* 3-step indicators */}
           <div className="flex flex-wrap justify-center gap-4 mt-6 mb-10">
-            {['Installation','Lifetime Maintenance','47 Counties Served'].map(b => (
-              <span key={b} className="flex items-center gap-1.5 text-xs font-semibold text-white/90 bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-1.5 rounded-full">
-                <span style={{ color: '#06b6d4' }}>✓</span> {b}
+            {[
+              { num: '1', text: 'Enter Your Location' },
+              { num: '2', text: 'Get Your Personalised Quote' },
+              { num: '3', text: 'Start Saving' },
+            ].map(s => (
+              <span key={s.num} className="flex items-center gap-2 text-xs font-semibold text-white/90 bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-1.5 rounded-full">
+                <span className="w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style={{ background: '#f97316' }}>{s.num}</span>
+                {s.text}
               </span>
             ))}
           </div>
@@ -232,8 +238,8 @@ export default function Hero({ onLocationConfirmed }) {
             <p className="mt-3 text-red-300 text-sm text-center">{searchError}</p>
           )}
 
-          <p className="mt-4 text-white/50 text-xs">
-            Pin your exact roof location to get a personalised solar quote.
+          <p className="mt-4 text-white/50 text-xs italic">
+            Every month you wait, you are paying Kenya Power instead of yourself.
           </p>
         </div>
 

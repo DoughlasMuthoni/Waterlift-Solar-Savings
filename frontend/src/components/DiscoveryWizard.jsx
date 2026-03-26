@@ -250,19 +250,19 @@ export default function DiscoveryWizard({ location, onComplete, onClose }) {
                     <p className="text-white/50 text-xs mt-1">per month</p>
                   </div>
 
-                  <input type="range" min={500} max={50000} step={500} value={monthlyBill}
+                  <input type="range" min={500} max={500000} step={500} value={monthlyBill}
                     onChange={e => setMonthlyBill(e.target.value)}
                     className="w-full cursor-pointer mb-2" style={{ accentColor: '#f97316' }} />
                   <div className="flex justify-between text-xs text-gray-400 mb-5">
-                    <span>KES 500</span><span>KES 50,000</span>
+                    <span>KES 500</span><span>KES 500,000</span>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <label className="text-sm font-medium text-gray-500 shrink-0">Exact amount:</label>
                     <div className="relative flex-1">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-gray-400">KES</span>
-                      <input type="number" min={500} max={50000} value={monthlyBill}
-                        onChange={e => setMonthlyBill(Math.min(50000, Math.max(500, Number(e.target.value))))}
+                      <input type="number" min={500} max={500000} value={monthlyBill}
+                        onChange={e => setMonthlyBill(Math.min(500000, Math.max(500, Number(e.target.value))))}
                         className="w-full border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-sm font-semibold focus:outline-none"
                         style={{ '--ring-color': '#f97316' }} />
                     </div>

@@ -94,7 +94,7 @@ function StarPicker({ value, onChange }) {
 
 export default function ContactForm({ prefill }) {
   const [form, setForm] = useState({
-    name: '', phone: '', email: '', county: '', propertyType: '', interest: '', message: '',
+    name: '', phone: '', email: '', county: '', address: '', propertyType: '', interest: '', message: '',
   })
   const [status, setStatus] = useState(null)
   const [submittedName, setSubmittedName] = useState('')
@@ -172,7 +172,7 @@ export default function ContactForm({ prefill }) {
       if (res.ok) {
         setSubmittedName(form.name)
         setStatus('success')
-        setForm({ name: '', phone: '', email: '', county: '', propertyType: '', interest: '', message: '' })
+        setForm({ name: '', phone: '', email: '', county: '', address: '', propertyType: '', interest: '', message: '' })
       } else {
         setStatus('error')
       }
@@ -201,13 +201,13 @@ export default function ContactForm({ prefill }) {
         <div className="text-center mb-12">
           <span className="inline-block text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-3"
             style={{ background: '#fff7ed', color: '#f97316' }}>
-            Get In Touch
+            Ready to Take Control?
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-2" style={{ color: '#0f2d52' }}>
-            Ready to Go Solar?
+            Your Power Bill Does Not Have to Control Your Life
           </h2>
           <p className="text-gray-500 text-sm max-w-md mx-auto">
-            Fill in the form and our team will reach out within 24 hours with your personalised quote.
+            Fill in the form and our team will reach out within 24 hours with a personalised solar plan and savings estimate — completely free, no obligation.
           </p>
         </div>
 
@@ -270,7 +270,7 @@ export default function ContactForm({ prefill }) {
 
             {/* Form header */}
             <div className="px-8 py-5" style={{ background: 'linear-gradient(135deg, #0f2d52, #1e4d8c)' }}>
-              <h3 className="text-lg font-extrabold text-white">Request a Free Quote</h3>
+              <h3 className="text-lg font-extrabold text-white">Get My Free Solar Quote</h3>
               <p className="text-white/60 text-xs mt-0.5">We respond within 24 hours · No obligation</p>
             </div>
 
@@ -413,6 +413,13 @@ export default function ContactForm({ prefill }) {
                     </InputField>
                   </div>
 
+                  {/* Address */}
+                  <InputField label="Street Address / Area">
+                    <input name="address" type="text" value={form.address} onChange={handleChange}
+                      placeholder="e.g. Ruiru, Kiambu Road, Plot 45…"
+                      style={inputBase} />
+                  </InputField>
+
                   {/* Row 3: Property Type + Interest */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <InputField label="Property Type" prefilled={!!(prefill?.propertyType && form.propertyType === prefill.propertyType)}>
@@ -445,7 +452,7 @@ export default function ContactForm({ prefill }) {
                   <button type="submit" disabled={status === 'sending'}
                     className="w-full font-extrabold py-4 rounded-2xl text-white text-sm transition-all disabled:opacity-60 hover:opacity-90"
                     style={{ background: 'linear-gradient(135deg, #f97316, #c2410c)', boxShadow: '0 8px 24px rgba(249,115,22,0.35)' }}>
-                    {status === 'sending' ? '⏳ Sending…' : '☀️ Submit — Get My Free Solar Quote →'}
+                    {status === 'sending' ? '⏳ Sending…' : '☀️ Show Me My Savings →'}
                   </button>
 
                   <p className="text-center text-gray-400 text-xs">

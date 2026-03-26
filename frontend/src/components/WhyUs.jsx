@@ -1,10 +1,10 @@
 const BENEFITS = [
-  { icon: '🔧', title: 'Free Installation',     desc: 'Our certified engineers handle everything — site survey, mounting, wiring, and commissioning.' },
-  { icon: '🛡️', title: 'Lifetime Maintenance',  desc: 'All Rent and Rent-to-Own customers receive ongoing maintenance at no extra cost, for life.' },
-  { icon: '📡', title: '24/7 Remote Monitoring', desc: 'Our systems transmit live performance data so we can detect and fix issues before you notice them.' },
-  { icon: '💧', title: 'Borehole Specialists',   desc: 'We are one of the few providers that properly sizes solar for borehole pump surge loads.' },
-  { icon: '🗺️', title: 'Truly National',         desc: 'Serving all 47 counties — from Mombasa to Mandera. No area is too remote for our team.' },
-  { icon: '📋', title: 'Flexible Payment',        desc: 'Rent from as low as KES 3,500/mo, Rent-to-Own for 72 months, or save long-term with Cash.' },
+  { icon: '🔧', title: 'Free Professional Installation', desc: 'Our certified engineers handle every detail — site survey, mounting, wiring, and commissioning. You pay nothing extra.' },
+  { icon: '🛡️', title: 'Lifetime Maintenance',          desc: 'Rent and Rent-to-Own customers get ongoing maintenance at zero cost, for life. If something breaks, we fix it.' },
+  { icon: '📡', title: '24/7 Remote Monitoring',        desc: 'We watch your system around the clock. We detect and fix issues before you even notice them.' },
+  { icon: '💧', title: 'Borehole Specialists',          desc: 'We are one of the few providers who properly size solar for borehole pump surge loads. Your water never stops.' },
+  { icon: '🇰🇪', title: 'Truly National',              desc: 'From Mombasa to Mandera, no area is too remote for our team. All 47 counties, no exceptions.' },
+  { icon: '💳', title: 'Flexible Payment',              desc: 'Rent from as low as KES 3,500 per month. Rent-to-Own for 72 months. Or save more by paying cash upfront.' },
 ]
 
 export default function WhyUs() {
@@ -15,7 +15,7 @@ export default function WhyUs() {
           {/* Left — image with overlay badge */}
           <div className="lg:w-2/5 relative flex-shrink-0">
             <img
-              src="/images/installation.jpg"
+              src="/images/solar-commercial.jpg"
               alt="Waterlift installation team"
               className="rounded-3xl w-full object-cover h-96 shadow-xl"
             />
@@ -29,11 +29,14 @@ export default function WhyUs() {
           {/* Right — benefits grid */}
           <div className="lg:w-3/5">
             <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full" style={{ background: '#fff7ed', color: '#f97316' }}>
-              Why Choose Us
+              Your Trusted Guide
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 mb-8" style={{ color: '#0f2d52' }}>
-              More Than Just Solar Panels
+            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 mb-4" style={{ color: '#0f2d52' }}>
+              We Have Done This 105 Times.<br />We Know What Works.
             </h2>
+            <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg">
+              We understand the frustration of paying more every month for electricity that cuts off without warning. We built Waterlift Solar because we believe every Kenyan deserves reliable, affordable energy. Here is how we deliver on that promise.
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {BENEFITS.map(b => (
                 <div key={b.title} className="flex gap-4 p-4 rounded-2xl hover:bg-orange-50 transition-colors">

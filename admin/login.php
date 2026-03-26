@@ -3,7 +3,7 @@ require_once __DIR__ . '/includes/auth.php';
 if (session_status() === PHP_SESSION_NONE) session_start();
 
 if (!empty($_SESSION['admin_logged_in'])) {
-    header('Location: /waterlift_solat_savings/admin/dashboard.php'); exit;
+    header('Location: ' . ADMIN_BASE . '/dashboard.php'); exit;
 }
 
 $error = '';
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (attempt_login($user, $pass)) {
         $_SESSION['admin_logged_in'] = true;
         $_SESSION['admin_user']      = $user;
-        header('Location: /waterlift_solat_savings/admin/dashboard.php'); exit;
+        header('Location: ' . ADMIN_BASE . '/dashboard.php'); exit;
     }
     $error = 'Invalid username or password.';
 }
@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Logo card -->
     <div class="text-center mb-8">
       <div class="inline-block bg-white rounded-2xl px-5 py-3 mb-4 shadow-lg">
-        <img src="/waterlift_solat_savings/frontend/public/images/logo.png"
+        <img src="<?= SITE_BASE ?>/frontend/public/images/logo.jpeg"
              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-             class="h-10 object-contain" alt="Waterlift Solar" />
+             class="h-16 object-contain" alt="Waterlift Solar" />
         <span style="display:none;color:#0f2d52;font-weight:800">Waterlift Solar</span>
       </div>
       <p class="text-white/60 text-sm">Admin Dashboard</p>

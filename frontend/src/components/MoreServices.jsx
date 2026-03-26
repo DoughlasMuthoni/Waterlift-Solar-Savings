@@ -45,11 +45,10 @@ export default function MoreServices() {
             More from Waterlift
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-3">
-            We're More Than Solar
+            We Are More Than Solar
           </h2>
           <p className="text-white/50 text-sm mt-2 max-w-md mx-auto">
-            Visit our full website to explore borehole drilling, Borehole Equipping, water towers, and more —
-            everything you need for water and energy independence.
+            Waterlift also delivers borehole drilling, equipping, water storage towers, and hydrogeological surveys across all 47 counties. One company for energy and water independence.
           </p>
         </div>
 
@@ -72,7 +71,7 @@ export default function MoreServices() {
               <p className="text-white/40 text-[11px] leading-relaxed">{s.desc}</p>
               <span className="mt-3 text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{ color: '#f97316' }}>
-                Learn more →
+                Get a Quote →
               </span>
             </motion.a>
           ))}
